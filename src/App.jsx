@@ -7,13 +7,17 @@ function App() {
   const [listaTarea, setListaTarea] = useState([])
 
   const handleChange = (e) => {
+
     setTarea(e.target.value)
 
   }
 
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+
     setListaTarea([...listaTarea, tarea])
     setTarea('')
 
@@ -21,14 +25,11 @@ function App() {
   }
 
 
-
-
-
   const deletItem = (id) => {
+
     const newTask = [...listaTarea]
     newTask.splice(id, 1)
     setListaTarea(newTask)
-
   }
 
 
@@ -43,9 +44,7 @@ function App() {
 
         </form>
         <Tareas listaTarea={listaTarea} deletItem={deletItem} />
-        <div>
-          <p>{listaTarea.length} Items</p>
-        </div>
+        {listaTarea.length > 0 ? (<div><p>{listaTarea.length} items</p></div>) : null}
       </div>
     </div>
 
